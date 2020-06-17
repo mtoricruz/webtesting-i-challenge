@@ -10,5 +10,13 @@ describe('repair, success, fail items', function () {
     it('successfully enhance items below max lvl', function () {
         expect(succeed({ enhancement: 10 }).enhancement).toBe(11)
     })
-    it.todo('fail enhance items')
+    it('fail enhance items decrease durability by 5 if less than lvl 15', function() {
+        expect(fail({ enhancement: 14, durability: 10}).durability).toBe(5)
+    })
+    it('fail enhance items decrease durability by 10 if enhance lvl 15 or more', function() {
+        expect(fail({ enhancement: 15, durability: 10}).durability).toBe(0)
+    })
+    it('fail enhance decrease enhancement lvl by 1 if enhance lvl 16 or more', function() {
+        expect(fail({ enhancement: 17 }).enhancement).toBe(16)
+    })
 })
