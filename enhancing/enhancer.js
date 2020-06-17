@@ -14,7 +14,16 @@ function fail(item) {
 }
 
 function repair(item) {
-  return { ...item };
+  if(item.durability < 100 && item.durability >=0){
+    return {...item, durability: 100}
+  } else {
+    return ('nope you failed')
+  }
+  // const values = Array.isArray(item) ? numbers : Array.from(arguments)
+  // return values.reduce((sum, value) => {
+  //   console.log(value)
+  //   return sum + value;
+  // }, 0)
 }
 
 function get(item) {
